@@ -82,9 +82,9 @@ You can build RIE into a base image\. The following steps show how to download t
    ```
    #!/bin/sh
    if [ -z "${AWS_LAMBDA_RUNTIME_API}" ]; then
-     exec /usr/local/bin/aws-lambda-rie /usr/local/bin/npx aws-lambda-ric $@
+     exec /usr/local/bin/aws-lambda-rie /usr/local/bin/npx aws-lambda-ric "$@"
    else
-     exec /usr/local/bin/npx aws-lambda-ric $@
+     exec /usr/local/bin/npx aws-lambda-ric "$@"
    fi
    ```
 
@@ -93,9 +93,9 @@ You can build RIE into a base image\. The following steps show how to download t
    ```
    #!/bin/sh
    if [ -z "${AWS_LAMBDA_RUNTIME_API}" ]; then
-     exec /usr/local/bin/aws-lambda-rie /usr/local/bin/python -m awslambdaric $@
+     exec /usr/local/bin/aws-lambda-rie /usr/local/bin/python -m awslambdaric "$@"
    else
-     exec /usr/local/bin/python -m awslambdaric $@
+     exec /usr/local/bin/python -m awslambdaric "$@"
    fi
    ```
 
@@ -109,7 +109,7 @@ You can build RIE into a base image\. The following steps show how to download t
 
    ```
    COPY ./entry_script.sh /entry_script.sh
-   ADD aws-lambda-rie-x86_64 /usr/local/bin/aws-lambda-rie
+   ADD aws-lambda-rie /usr/local/bin/aws-lambda-rie
    ENTRYPOINT [ "/entry_script.sh" ]
    ```
 
